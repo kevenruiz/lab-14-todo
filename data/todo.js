@@ -17,53 +17,45 @@ const todo = [
     userName:
   },
   {
-    id: 0,
-    task: '',
+    id: 2,
+    task: 'eat pizza',
     completed: false,
     //shared:,
     userId: 0,
     userName:
   },
   {
-    id: 0,
-    task: '',
+    id: 3,
+    task: 'go camping',
     completed: false,
     //shared:,
     userId: 0,
     userName:
   },
   {
-    id: 0,
-    task: '',
+    id: 4,
+    task: 'raise guinea pig army',
     completed: false,
     //shared:,
     userId: 0,
     userName:
   },
   {
-    id: 0,
-    task: '',
+    id: 5,
+    task: 'swim in greece',
     completed: false,
     //shared:,
     userId: 0,
     userName:
   },
   {
-    id: 0,
-    task: '',
+    id: 6,
+    task: 'paint ceiling',
     completed: false,
     //shared:,
     userId: 0,
     userName:
   },
-  {
-    id: 0,
-    task: '',
-    completed: false,
-    //shared:,
-    userId: 0,
-    userName:
-  }
 ];
 
 export default todo;
