@@ -75,7 +75,7 @@ describe('api routes', () => {
       });
     expect(response.status).toBe(200);
     user = response.body;
-  })
+  });
 });
 
 it('GET /api/me/todos', async () => {
@@ -88,5 +88,5 @@ it('GET /api/me/todos', async () => {
 
 });
 
-});
-});
+
+
