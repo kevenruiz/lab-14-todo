@@ -1,8 +1,8 @@
 const users = [
   {
-    name: 'Cat Lover',
-    email: 'lover@cats.com',
-    password: 'sekrit'
+    name: 'To Do Lover',
+    email: 'lover@todo.com',
+    password: 'cupid123'
   }
 ];
 

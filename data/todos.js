@@ -1,5 +1,5 @@
 // example seed data
-const todo = [
+const todos = [
   //   {
   //     id: 3,
   //     task: 'wash the dishes',
@@ -14,7 +14,7 @@ const todo = [
     completed: false,
     //shared:,
     userId: 0,
-    userName:
+    // userName:
   },
   {
     id: 2,
@@ -22,7 +22,7 @@ const todo = [
     completed: false,
     //shared:,
     userId: 0,
-    userName:
+    // userName:
   },
   {
     id: 3,
@@ -30,7 +30,7 @@ const todo = [
     completed: false,
     //shared:,
     userId: 0,
-    userName:
+    // userName:
   },
   {
     id: 4,
@@ -38,7 +38,7 @@ const todo = [
     completed: false,
     //shared:,
     userId: 0,
-    userName:
+    // userName:
   },
   {
     id: 5,
@@ -46,7 +46,7 @@ const todo = [
     completed: false,
     //shared:,
     userId: 0,
-    userName:
+    // userName:
   },
   {
     id: 6,
@@ -54,8 +54,8 @@ const todo = [
     completed: false,
     //shared:,
     userId: 0,
-    userName:
+    // userName:
   },
 ];
 
-export default todo;
+export default todos;
