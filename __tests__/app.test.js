@@ -56,3 +56,37 @@ describe('API Routes', () => {
   });
 });
 
+describe('api routes', () => {
+  let user;
+
+  afterAll(async () => {
+    return client.end();
+  });
+
+  beforeAll(async () => {
+    execSync('npm run recreate-tables');
+
+    const response = await request
+      .post('/api/auth/sighUp')
+      .send({
+        name: 'To Do Lover',
+        email: 'lover@todo.com',
+        password: 'cupid123'
+      });
+    expect(response.status).toBe(200);
+    user = response.body;
+  })
+});
+
+it('GET /api/me/todos', async () => {
+
+
+  user.token;
+
+  // expect(response.status).toBe(200);
+  // expect(response.body).toEqual(?);
+
+});
+
+});
+});

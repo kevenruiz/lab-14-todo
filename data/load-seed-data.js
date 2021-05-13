@@ -16,8 +16,7 @@ async function run() {
           INSERT INTO users (name, email, hash)
           VALUES ($1, $2, $3)
           RETURNING *;
-        `,
-          [user.name, user.email, user.password]);
+        `, [user.name, user.email, user.password]);
       })
     );
 
