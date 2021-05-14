@@ -100,10 +100,10 @@ describe('API Routes', () => {
       expect(response.status).toBe(200);
       expect(response.body).toEqual(task);
 
-      const newResponse = await request.get('/api/todos/');
-      expect(newResponse.status).toBe(200);
-      expect(newResponse.body.find(todo => todo.id === task.id)).toBeUndefined();
+      const newResponse = await request.get('/api/todos/').set('Authorization', user.token);
 
+      expect(newResponse.status).toBe(200);
+      expect(newResponse.body).toEqual(expect.not.arrayContaining([task]));
       // const todoResponseBody = todoResponse.body;
 
       // const response = await request.delete(`/api/me/todos/${todoResponseBody.id}`)
