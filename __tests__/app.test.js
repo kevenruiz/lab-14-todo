@@ -36,7 +36,7 @@ describe('API Routes', () => {
       task: 'Catch \'em all',
       completed: false,
       //shared:,
-      userId: 0,
+      userId: 1,
       // userName:
     };
 
@@ -52,9 +52,9 @@ describe('API Routes', () => {
         userId: user.id,
         ...task
       });
+      task = response.body;
     });
 
-    task = response.body;
 
     it('GET /api/me/todos', async () => {
 
@@ -73,17 +73,17 @@ describe('API Routes', () => {
       const otherTodo = otherTodoResponse.body;
 
       // we are testing this
-      const response = await request.get('/api/me/books')
+      const response = await request.get('/api/todos')
         .set('Authorization', user.token);
       expect(response.status).toBe(200);
-      expect(response.body).toEqual(expect.not.arrayContaining([otherTodo]));
+      expect(response.body).toEqual(expect.not.arrayContaining([task, otherTodo]));
 
     });
 
   });
 });
 
-
+//this is nothing.
 // it('VERB to /api/route [with context]', async () => {
 
 //   // remove this line, here to not have lint error:
