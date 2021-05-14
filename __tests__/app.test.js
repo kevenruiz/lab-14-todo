@@ -20,18 +20,15 @@ describe('API Routes', () => {
       const response = await request
         .post('/api/auth/signup')
         .send({
-          name: 'Me the User',
-          email: 'me@user.com',
-          password: 'password'
+          name: 'To Do Lover',
+          email: 'lover@todo.com',
+          password: 'cupid123'
         });
 
       expect(response.status).toBe(200);
 
       user = response.body;
     });
-
-    // append the token to your requests:
-    //  .set('Authorization', user.token);
 
     let task =
     {
@@ -43,50 +40,56 @@ describe('API Routes', () => {
       // userName:
     };
 
-    it('VERB to /api/route [with context]', async () => {
+    it('POST task to /api/todos', async () => {
 
-      // remove this line, here to not have lint error:
-      user.token;
+      const response = await request
+        .post('/api/todos')
+        .set('Authorization', user.token)
+        .send(task);
 
-      // expect(response.status).toBe(200);
-      // expect(response.body).toEqual(?);
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual({
+        userId: user.id,
+        ...task
+      });
+    });
+
+    task = response.body;
+
+    it('GET /api/me/todos', async () => {
+
+      const otherTodoResponse = await request
+        .post('/api/todos')
+        .set('Authorization', user.token)
+        .send({
+          task: 'Catch \'em all',
+          completed: false,
+          //shared:,
+          userId: 1,
+          // userName:
+        });
+
+      expect(otherTodoResponse.status).toBe(200);
+      const otherTodo = otherTodoResponse.body;
+
+      // we are testing this
+      const response = await request.get('/api/me/books')
+        .set('Authorization', user.token);
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual(expect.not.arrayContaining([otherTodo]));
 
     });
 
   });
 });
 
-describe('api routes', () => {
-  let user;
 
-  afterAll(async () => {
-    return client.end();
-  });
+// it('VERB to /api/route [with context]', async () => {
 
-  beforeAll(async () => {
-    execSync('npm run recreate-tables');
+//   // remove this line, here to not have lint error:
+//   user.token;
 
-    const response = await request
-      .post('/api/auth/sighUp')
-      .send({
-        name: 'To Do Lover',
-        email: 'lover@todo.com',
-        password: 'cupid123'
-      });
-    expect(response.status).toBe(200);
-    user = response.body;
-  });
-});
+//   // expect(response.status).toBe(200);
+//   // expect(response.body).toEqual(?);
 
-it('GET /api/me/todos', async () => {
-
-
-  user.token;
-
-  // expect(response.status).toBe(200);
-  // expect(response.body).toEqual(?);
-
-});
-
-
-
+// });
