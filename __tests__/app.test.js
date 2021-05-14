@@ -80,6 +80,21 @@ describe('API Routes', () => {
 
     });
 
+    it('PUT /api/todos/:id/completed', async () => {
+      task.completed = true;
+      task.task = 'raise army of guinea pigs';
+      // remove this line, here to not have lint error:
+
+      const response = await request
+        .put(`/api/todos/${task.id}`)
+        .set('Authorization', user.token)
+        .send(task);
+
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual(task);
+
+    });
+
   });
 });
 
