@@ -27,8 +27,7 @@ async function run() {
         return client.query(`
         INSERT INTO todos (task, completed, user_id) 
         VALUES ($1, $2, $3)
-        `,
-          [todo.task, todo.completed, user.id]);
+        `, [todo.task, todo.completed, user.id]);
       })
     );
 
