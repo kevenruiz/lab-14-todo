@@ -95,8 +95,25 @@ describe('API Routes', () => {
 
     });
 
+    it('DELETE /api/todos/:id', async () => {
+      const response = await request.delete(`/api/todos/${task.id}`).set('Authorization', user.token);
+      expect(response.status).toBe(200);
+      expect(response.body).toEqual(task);
+
+      const newResponse = await request.get('/api/todos/');
+      expect(newResponse.status).toBe(200);
+      expect(newResponse.body.find(todo => todo.id === task.id)).toBeUndefined();
+
+      // const todoResponseBody = todoResponse.body;
+
+      // const response = await request.delete(`/api/me/todos/${todoResponseBody.id}`)
+
+    });
+
   });
 });
+
+
 
 //this is nothing.
 // it('VERB to /api/route [with context]', async () => {
