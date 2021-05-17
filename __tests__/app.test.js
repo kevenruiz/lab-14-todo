@@ -95,15 +95,20 @@ describe('API Routes', () => {
 
     });
 
-    it('DELETE /api/todos/:id', async () => {
-      const response = await request.delete(`/api/todos/${task.id}`).set('Authorization', user.token);
+    it('DELETE task from /api/todos/:id', async () => {
+      const response = await request
+        .delete(`/api/todos/${task.id}`)
+        .set('Authorization', user.token);
       expect(response.status).toBe(200);
       expect(response.body).toEqual(task);
 
-      const newResponse = await request.get('/api/todos/').set('Authorization', user.token);
+      const newResponse = await request
+        .get('/api/todos/')
+        .set('Authorization', user.token);
 
       expect(newResponse.status).toBe(200);
-      expect(newResponse.body).toEqual(expect.not.arrayContaining([task]));
+      expect(newResponse.body).toEqual(expect.not.arrayContanting([task]));
+
       // const todoResponseBody = todoResponse.body;
 
       // const response = await request.delete(`/api/me/todos/${todoResponseBody.id}`)
@@ -112,16 +117,3 @@ describe('API Routes', () => {
 
   });
 });
-
-
-
-//this is nothing.
-// it('VERB to /api/route [with context]', async () => {
-
-//   // remove this line, here to not have lint error:
-//   user.token;
-
-//   // expect(response.status).toBe(200);
-//   // expect(response.body).toEqual(?);
-
-// });
